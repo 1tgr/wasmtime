@@ -65,13 +65,18 @@ impl FunctionBuilderContext {
         }
     }
 
-    fn clear(&mut self) {
+    /// Clears the FunctionBuilderContext.
+    ///
+    /// This function is called after each [`FunctionBuilder`](struct.FunctionBuilder.html)
+    /// completes translating a function.
+    pub fn clear(&mut self) {
         self.ssa.clear();
         self.blocks.clear();
         self.types.clear();
     }
 
-    fn is_empty(&self) -> bool {
+    /// Returns `true` unless the FunctionBuilderContext is currently being used to translate a function.
+    pub fn is_empty(&self) -> bool {
         self.ssa.is_empty() && self.blocks.is_empty() && self.types.is_empty()
     }
 }
